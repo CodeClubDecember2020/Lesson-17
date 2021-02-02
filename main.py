@@ -8,16 +8,32 @@ https://pymbook.readthedocs.io/en/latest/exceptions.html#exceptions
 
 
 # what's the problem here?
-print(crocodile)
+print('crocodile')
 
 # what is the problem here?
-result = 2 + '2'
+result = 2 + 2
 
 # iterate over the list and print the half of every item
 # if the item cannot be divided (due to TypeError), print "Not a number"
 list_of_things = [2, 2, 'banana', 'superman', 30.0, 416]
 
+for item in list_of_things:
+    if type(item) == str:
+        print('Not a number!')
+    else:
+        print(item / 2)
 
+for item in list_of_things:
+    try:
+        print(item / 2)
+    except:
+        print('Not a number!')
+
+for item in list_of_things:
+    try:
+        print(item / 2)
+    except TypeError:
+        print('Not a number!')
 
 # Object oriented programming basics
 
@@ -41,7 +57,7 @@ superheroes = {
     'Wonder Woman': {
         'legal name': 'Diana Prince',
         'powers': ['strength', 'speed', 'agility']
-    }, 
+    },
     'Spiderman': {
         'legal name': 'Peter Parker',
         'powers': ['spider senses', 'spider webs'],
@@ -78,7 +94,7 @@ class SuperHero:
 class DCSuperHero(SuperHero):
     def get_description(self):
         return self.description + ' and they are part of the DC universe'
-    
+
 
 superman = SuperHero('Superman', ['x-ray vision', 'flying', 'super strength'])
 
