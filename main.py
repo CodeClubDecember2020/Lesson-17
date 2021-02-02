@@ -65,15 +65,20 @@ class SuperHero:
         self.powers = powers
         self.legal_name = legal_name
 
-
-    # this is an "instance method"
-    def description(self):
-        description = self.name + ' has the following powers: ' + ', '.join(self.powers)
+        self.description = self.name + ' has the following powers: ' + ', '.join(self.powers)
         if self.legal_name is not None:
             description += ' and their legal name is ' + self.legal_name
-            
-        return description
 
+    # this is an "instance method"
+    def get_description(self):
+        return self.description
+
+# a class can inherit from another class:
+# in this case, the DCSuperHero class inherits from the SuperHero class
+class DCSuperHero(SuperHero):
+    def get_description(self):
+        return self.description + ' and they are part of the DC universe'
+    
 
 superman = SuperHero('Superman', ['x-ray vision', 'flying', 'super strength'])
 
