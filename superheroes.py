@@ -1,3 +1,5 @@
+import random
+
 # this is a class
 class SuperHero:
     # this is the "constructor" method - the __init__ method
@@ -19,11 +21,14 @@ class SuperHero:
 
     # the hero should say something
     def speak(self):
-        pass
+        intros = [f'Hi, I\'m {self.name} and I will kick your ass!',
+        'I am darkness!']
+        print(random.choice(intros))
 
     # this function should reset the hero's life back to it's maximum level
-    def go_to_hostpital(self):
-
+    def go_to_hospital(self):
+        print(f'{self.name} went to the hospital, now he feels ready to fight again!')
+        self.life = self.max_life
 
 # another approach is to create a Fight class:
 class Fight:
@@ -45,7 +50,7 @@ class Fight:
             elif self.p2.life <= self.p2.max_life//5:
                 result = self.p2
             return result
-            
+
         sick_hero = check_if_anyone_is_sick()
 
         if sick_hero is not None:
