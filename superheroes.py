@@ -17,8 +17,12 @@ class SuperHero:
     def get_description(self):
         return self.description
 
+    # the hero should say something
     def speak(self):
         pass
+
+    # this function should reset the hero's life back to it's maximum level
+    def go_to_hostpital(self):
 
 
 # another approach is to create a Fight class:
@@ -34,22 +38,19 @@ class Fight:
             print('This fight is over. If you want to fight again, start a new fight!')
             return
 
-        def check_if_sick():
-            result = False
+        def check_if_anyone_is_sick():
+            result = None
             if self.p1.life <= self.p1.max_life//5:
-                print(f'They will not fight - {self.p1.name} is sick')
-                result = True
+                result = self.p1
             elif self.p2.life <= self.p2.max_life//5:
-                print(f'They will not fight - {self.p2.name} is sick')
-                result = True
-            if result is True:
-                print('They will have to go to the hospital 🏥 🚑 👩‍⚕️')
-
+                result = self.p2
             return result
             
-        is_anyone_sick = check_if_sick()
+        sick_hero = check_if_anyone_is_sick()
 
-        if is_anyone_sick:
+        if sick_hero is not None:
+            print(f'They will not fight - {sick_hero.name} is too sick ☹️ ')
+            print('They will have to go to the hospital 🏥 🚑 👩‍⚕️')
             return
 
         print(f'Friendly fight: {self.p1.name} VS {self.p2.name}')
@@ -69,10 +70,10 @@ class Fight:
 
     def print_health_points(self):
         print(f'{self.p1.name} has {self.p1.life} health points left')
-        print(f"{self.p1.life * '💚'} {(self.p1.max_life - self.p1.life) * '💔'}")
+        print(f"{self.p1.life * '💚'}{(self.p1.max_life - self.p1.life) * '💔'}")
         print()
         print(f'{self.p2.name} has {self.p2.life} health points left')
-        print(f"{self.p2.life * '💚'} {(self.p2.max_life - self.p2.life) * '💔'}")
+        print(f"{self.p2.life * '💚'}{(self.p2.max_life - self.p2.life) * '💔'}")
 
 
 
